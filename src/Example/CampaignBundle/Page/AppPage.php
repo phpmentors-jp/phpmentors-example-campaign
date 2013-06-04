@@ -42,8 +42,8 @@ namespace Example\CampaignBundle\Page;
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @since      Class available since Release 1.0.0
  */
-class AppPage {
-
+class AppPage
+{
 }
 
 /*

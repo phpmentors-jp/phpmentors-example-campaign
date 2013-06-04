@@ -57,7 +57,7 @@ class CampaignRepository extends EntityRepository
     }
 
     /**
-     * @param OpenCampaignSpecification $spec
+     * @param  OpenCampaignSpecification                    $spec
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function selectSatisfying(OpenCampaignSpecification $spec)

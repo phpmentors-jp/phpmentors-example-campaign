@@ -63,7 +63,7 @@ class OpenCampaignSpecification
     }
 
     /**
-     * @param Campaign $campaign
+     * @param  Campaign $campaign
      * @return bool
      */
     public function isSatisfiedBy(Campaign $campaign)
@@ -80,7 +80,7 @@ class OpenCampaignSpecification
     }
 
     /**
-     * @param CampaignRepository $campaignRepository
+     * @param  CampaignRepository $campaignRepository
      * @return ArrayCollection
      */
     public function satisfyingElementsFrom(CampaignRepository $campaignRepository)

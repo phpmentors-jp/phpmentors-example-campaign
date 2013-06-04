@@ -80,7 +80,7 @@ class CampaignPage extends AppPage
     }
 
     /**
-     * @param \DateTime $date
+     * @param  \DateTime $date
      * @return string
      */
     public function dateFormat(\DateTime $date)
