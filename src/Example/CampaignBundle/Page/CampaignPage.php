@@ -1,51 +1,22 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
-
-/**
- * PHP version 5.3
- *
+/*
  * Copyright (c) 2013 GOTO Hidenori <hidenorigoto@gmail.com>,
+ *               2014 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * This file is part of PHPMentors_Example_Symfony.
  *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- *
- * @package    PHPMentors_Example_Symfony
- * @copyright  2013 GOTO Hidenori <hidenorigoto@gmail.com>
- * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @since      File available since Release 1.0.0
+ * This program and the accompanying materials are made available under
+ * the terms of the BSD 2-Clause License which accompanies this
+ * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
 namespace Example\CampaignBundle\Page;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Example\CampaignBundle\Domain\Data\Repository\CampaignRepository;
+use Example\CampaignBundle\Domain\Data\CampaignCollection;
 use Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification;
+use Example\CampaignBundle\Domain\Usecase\OpenCampaignSearchUsecase;
 
-/**
- * @package    PHPMentors_Example_Symfony
- * @copyright  2013 GOTO Hidenori <hidenorigoto@gmail.com>
- * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @since      Class available since Release 1.0.0
- */
 class CampaignPage extends AppPage
 {
     /**
@@ -54,29 +25,33 @@ class CampaignPage extends AppPage
     protected $openCampaignSpec;
 
     /**
-     * @var CampaignRepository
-     */
-    protected $campaignRepository;
-
-    /**
-     * @var ArrayCollection
+     * @var CampaignCollection
      */
     protected $campaignList;
 
-    public function __construct(OpenCampaignSpecification $openCampaignSpec, CampaignRepository $campaignRepository)
+    /**
+     * @var OpenCampaignSearchUsecase
+     */
+    protected $openCampaignSearchUsecase;
+
+    /**
+     * @param OpenCampaignSpecification $openCampaignSpec
+     * @param OpenCampaignSearchUsecase $openCampaignSearchUsecase
+     */
+    public function __construct(OpenCampaignSpecification $openCampaignSpec, OpenCampaignSearchUsecase $openCampaignSearchUsecase)
     {
         $this->openCampaignSpec = $openCampaignSpec;
-        $this->campaignRepository = $campaignRepository;
+        $this->openCampaignSearchUsecase = $openCampaignSearchUsecase;
     }
 
     public function index()
     {
-        $this->campaignList = $this->campaignRepository->selectSatisfying($this->openCampaignSpec);
+        $this->campaignList = $this->openCampaignSearchUsecase->run($this->openCampaignSpec);
     }
 
     public function all()
     {
-        $this->campaignList = $this->campaignRepository->findAll();
+        $this->campaignList = $this->openCampaignSearchUsecase->run();
     }
 
     /**
@@ -89,7 +64,7 @@ class CampaignPage extends AppPage
     }
 
     /**
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return CampaignCollection
      */
     public function getCampaignList()
     {
@@ -97,28 +72,10 @@ class CampaignPage extends AppPage
     }
 
     /**
-     * @return \Example\CampaignBundle\Domain\Data\Repository\CampaignRepository
-     */
-    public function getCampaignRepository()
-    {
-        return $this->campaignRepository;
-    }
-
-    /**
-     * @return \Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification
+     * @return OpenCampaignSpecification
      */
     public function getOpenCampaignSpec()
     {
         return $this->openCampaignSpec;
     }
 }
-
-/*
- * Local Variables:
- * mode: php
- * coding: utf-8
- * tab-width: 4
- * c-basic-offset: 4
- * indent-tabs-mode: nil
- * End:
- */

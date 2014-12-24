@@ -37,6 +37,7 @@
 namespace Example\CampaignBundle\Domain\Data;
 
 use Doctrine\ORM\Mapping as ORM;
+use PHPMentors\DomainKata\Entity\EntityInterface;
 
 /**
  * @package    PHPMentors_Example_Symfony
@@ -47,7 +48,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Example\CampaignBundle\Domain\Data\Repository\CampaignRepository")
  * @ORM\Table(name="campaign")
  */
-class Campaign
+class Campaign implements EntityInterface
 {
     /**
      * @ORM\Column(name="id", type="integer")

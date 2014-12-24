@@ -1,77 +1,52 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
-
-/**
- * PHP version 5.3
- *
+/*
  * Copyright (c) 2013 GOTO Hidenori <hidenorigoto@gmail.com>,
+ *               2014 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * This file is part of PHPMentors_Example_Symfony.
  *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- *
- * @package    PHPMentors_Example_Symfony
- * @copyright  2013 GOTO Hidenori <hidenorigoto@gmail.com>
- * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @since      File available since Release 1.0.0
+ * This program and the accompanying materials are made available under
+ * the terms of the BSD 2-Clause License which accompanies this
+ * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
 namespace Example\CampaignBundle\Domain\Data\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
-use Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification;
+use PHPMentors\DomainKata\Entity\CriteriaInterface;
+use PHPMentors\DomainKata\Entity\EntityInterface;
+use PHPMentors\DomainKata\Repository\Operation\CriteriaBuilderInterface;
+use PHPMentors\DomainKata\Repository\Operation\QueryableInterface;
+use PHPMentors\DomainKata\Repository\RepositoryInterface;
 
-/**
- * @package    PHPMentors_Example_Symfony
- * @copyright  2013 GOTO Hidenori <hidenorigoto@gmail.com>
- * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @since      Class available since Release 1.0.0
- */
-class CampaignRepository extends EntityRepository
+use Example\CampaignBundle\Domain\Data\CampaignCollection;
+
+class CampaignRepository extends EntityRepository implements RepositoryInterface, QueryableInterface
 {
     /**
-     * @return ArrayCollection
+     * {@inheritDoc}
      */
-    public function findAll()
+    public function add(EntityInterface $entity)
     {
-        return new ArrayCollection(parent::findAll());
     }
 
     /**
-     * @param  OpenCampaignSpecification                    $spec
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * {@inheritDoc}
      */
-    public function selectSatisfying(OpenCampaignSpecification $spec)
+    public function remove(EntityInterface $entity)
     {
-        return $spec->satisfyingElementsFrom($this);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function queryByCriteria(CriteriaInterface $criteria)
+    {
+        if ($criteria instanceof CriteriaBuilderInterface) {
+            $criteria = $criteria->build();
+        }
+
+        return new CampaignCollection($this->matching($criteria)->toArray());
     }
 }
-
-/*
- * Local Variables:
- * mode: php
- * coding: utf-8
- * tab-width: 4
- * c-basic-offset: 4
- * indent-tabs-mode: nil
- * End:
- */
