@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d579379a372e10e3fe184bee254c2cb8",
+    "hash": "3c4ad40e5484ea17737162a0dc4bd779",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -851,6 +851,59 @@
                 "psr-3"
             ],
             "time": "2014-09-30 13:30:58"
+        },
+        {
+            "name": "phpmentors/domain-kata",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmentors-jp/domain-kata.git",
+                "reference": "6e600ace7b4dc7c4d40da3c0dca7426a72459eb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmentors-jp/domain-kata/zipball/6e600ace7b4dc7c4d40da3c0dca7426a72459eb6",
+                "reference": "6e600ace7b4dc7c4d40da3c0dca7426a72459eb6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPMentors\\DomainKata\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "KUBO Atsuhiro",
+                    "email": "kubo@iteman.jp"
+                },
+                {
+                    "name": "GOTO Hidenori",
+                    "email": "hidenorigoto@gmail.com"
+                }
+            ],
+            "description": "Kata for domain models",
+            "keywords": [
+                "Domain Driven Design",
+                "architecture",
+                "ddd",
+                "design",
+                "generative programming",
+                "modeling"
+            ],
+            "time": "2014-12-23 07:40:27"
         },
         {
             "name": "psr/log",
@@ -2381,7 +2434,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "phpmentors/domain-kata": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
