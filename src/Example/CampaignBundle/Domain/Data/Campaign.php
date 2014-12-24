@@ -36,7 +36,7 @@
 
 namespace Example\CampaignBundle\Domain\Data;
 
-use Doctrine\ORM\Mapping As ORM;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @package    PHPMentors_Example_Symfony

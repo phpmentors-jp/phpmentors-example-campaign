@@ -71,8 +71,7 @@ class OpenCampaignSpecification
         if (
             ($campaign->getStartDate() <= $this->clock->getCurrentDateTime()) &&
             ($campaign->getEndDate() > $this->clock->getCurrentDateTime())
-        )
-        {
+        ) {
             return true;
         }
 
@@ -86,7 +85,7 @@ class OpenCampaignSpecification
     public function satisfyingElementsFrom(CampaignRepository $campaignRepository)
     {
         $campaignList = $campaignRepository->findAll();
-        $campaignList = $campaignList->filter(function($campaign) { return $this->isSatisfiedBy($campaign); });
+        $campaignList = $campaignList->filter(function ($campaign) { return $this->isSatisfiedBy($campaign); });
 
         return $campaignList;
     }
