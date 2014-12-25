@@ -38,7 +38,7 @@ services:
     arguments: [ @domain.util.clock ]
 
   domain.repository.campaign:
-    class: Example\CampaignBundle\Domain\Data\Repository\CampaignRepository
+    class: Example\CampaignBundle\Repository\CampaignRepository
     factory_service: app.entity_manager
     factory_method: getRepository
     arguments: [ Example\CampaignBundle\Domain\Data\Campaign ]

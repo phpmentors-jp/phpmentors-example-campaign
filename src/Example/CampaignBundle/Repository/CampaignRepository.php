@@ -11,7 +11,7 @@
  * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
-namespace Example\CampaignBundle\Domain\Data\Repository;
+namespace Example\CampaignBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use PHPMentors\DomainKata\Entity\CriteriaInterface;

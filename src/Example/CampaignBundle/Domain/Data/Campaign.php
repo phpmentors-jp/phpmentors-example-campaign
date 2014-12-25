@@ -45,7 +45,7 @@ use PHPMentors\DomainKata\Entity\EntityInterface;
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @since      Class available since Release 1.0.0
  *
- * @ORM\Entity(repositoryClass="Example\CampaignBundle\Domain\Data\Repository\CampaignRepository")
+ * @ORM\Entity(repositoryClass="Example\CampaignBundle\Repository\CampaignRepository")
  * @ORM\Table(name="campaign")
  */
 class Campaign implements EntityInterface
