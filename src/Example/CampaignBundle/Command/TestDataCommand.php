@@ -36,10 +36,11 @@
 
 namespace Example\CampaignBundle\Command;
 
-use Example\CampaignBundle\Domain\Data\Campaign;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
+use Example\CampaignBundle\Entity\Campaign;
 
 /**
  * @package    PHPMentors_Example_Symfony

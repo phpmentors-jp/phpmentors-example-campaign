@@ -41,7 +41,7 @@ services:
     class: Example\CampaignBundle\Repository\CampaignRepository
     factory_service: app.entity_manager
     factory_method: getRepository
-    arguments: [ Example\CampaignBundle\Domain\Data\Campaign ]
+    arguments: [ Example\CampaignBundle\Entity\Campaign ]
 
   domain.usecase.open_campaign_search:
     class: Example\CampaignBundle\Usecase\OpenCampaignSearchUsecase

@@ -34,7 +34,7 @@
  * @since      File available since Release 1.0.0
  */
 
-namespace Example\CampaignBundle\Domain\Data;
+namespace Example\CampaignBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use PHPMentors\DomainKata\Entity\EntityInterface;

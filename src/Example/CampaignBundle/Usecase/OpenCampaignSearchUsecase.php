@@ -16,7 +16,7 @@ use PHPMentors\DomainKata\Entity\CriteriaInterface;
 use PHPMentors\DomainKata\Entity\EntityInterface;
 use PHPMentors\DomainKata\Usecase\QueryUsecaseInterface;
 
-use Example\CampaignBundle\Domain\Data\CampaignCollection;
+use Example\CampaignBundle\Entity\CampaignCollection;
 use Example\CampaignBundle\Repository\CampaignRepository;
 
 class OpenCampaignSearchUsecase implements QueryUsecaseInterface

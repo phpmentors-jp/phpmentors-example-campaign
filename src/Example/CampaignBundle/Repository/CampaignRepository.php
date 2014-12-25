@@ -20,7 +20,7 @@ use PHPMentors\DomainKata\Repository\Operation\CriteriaBuilderInterface;
 use PHPMentors\DomainKata\Repository\Operation\QueryableInterface;
 use PHPMentors\DomainKata\Repository\RepositoryInterface;
 
-use Example\CampaignBundle\Domain\Data\CampaignCollection;
+use Example\CampaignBundle\Entity\CampaignCollection;
 
 class CampaignRepository extends EntityRepository implements RepositoryInterface, QueryableInterface
 {
