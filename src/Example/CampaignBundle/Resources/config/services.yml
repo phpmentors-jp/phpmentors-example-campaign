@@ -31,7 +31,7 @@ services:
     arguments: [ @domain.spec.open_campaign, @domain.usecase.open_campaign_search ]
 
   domain.util.clock:
-    class: Example\CampaignBundle\Domain\Util\Clock
+    class: Example\CampaignBundle\Util\Clock
 
   domain.spec.open_campaign:
     class: Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification

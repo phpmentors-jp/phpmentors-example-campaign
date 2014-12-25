@@ -18,7 +18,7 @@ use PHPMentors\DomainKata\Repository\Operation\CriteriaBuilderInterface;
 use PHPMentors\DomainKata\Specification\SpecificationInterface;
 
 use Example\CampaignBundle\Domain\Data\Criteria;
-use Example\CampaignBundle\Domain\Util\Clock;
+use Example\CampaignBundle\Util\Clock;
 
 class OpenCampaignSpecification implements SpecificationInterface, CriteriaBuilderInterface
 {

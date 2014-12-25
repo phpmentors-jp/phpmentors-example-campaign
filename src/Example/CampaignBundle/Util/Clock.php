@@ -34,7 +34,7 @@
  * @since      File available since Release 1.0.0
  */
 
-namespace Example\CampaignBundle\Domain\Util;
+namespace Example\CampaignBundle\Util;
 
 /**
  * @package    PHPMentors_Example_Symfony
