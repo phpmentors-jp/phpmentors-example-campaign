@@ -11,7 +11,7 @@
  * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
-namespace Example\CampaignBundle\Domain\Specification;
+namespace Example\CampaignBundle\Specification;
 
 use PHPMentors\DomainKata\Entity\EntityInterface;
 use PHPMentors\DomainKata\Repository\Operation\CriteriaBuilderInterface;

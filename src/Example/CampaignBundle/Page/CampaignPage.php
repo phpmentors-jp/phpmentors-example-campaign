@@ -14,7 +14,7 @@
 namespace Example\CampaignBundle\Page;
 
 use Example\CampaignBundle\Domain\Data\CampaignCollection;
-use Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification;
+use Example\CampaignBundle\Specification\OpenCampaignSpecification;
 use Example\CampaignBundle\Usecase\OpenCampaignSearchUsecase;
 
 class CampaignPage extends AppPage
