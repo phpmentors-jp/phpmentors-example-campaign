@@ -44,7 +44,7 @@ services:
     arguments: [ Example\CampaignBundle\Domain\Data\Campaign ]
 
   domain.usecase.open_campaign_search:
-    class: Example\CampaignBundle\Domain\Usecase\OpenCampaignSearchUsecase
+    class: Example\CampaignBundle\Usecase\OpenCampaignSearchUsecase
     arguments: [ @domain.repository.campaign ]
 
 # Local Variables:

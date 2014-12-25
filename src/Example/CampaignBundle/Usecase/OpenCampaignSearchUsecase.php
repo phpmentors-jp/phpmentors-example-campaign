@@ -10,7 +10,7 @@
  * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
-namespace Example\CampaignBundle\Domain\Usecase;
+namespace Example\CampaignBundle\Usecase;
 
 use PHPMentors\DomainKata\Entity\CriteriaInterface;
 use PHPMentors\DomainKata\Entity\EntityInterface;
