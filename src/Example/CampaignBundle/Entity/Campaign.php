@@ -34,61 +34,132 @@
  * @since      File available since Release 1.0.0
  */
 
-namespace Example\CampaignBundle\Domain\Specification;
+namespace Example\CampaignBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Example\CampaignBundle\Domain\Data\Campaign;
-use Example\CampaignBundle\Domain\Data\Repository\CampaignRepository;
-use Example\CampaignBundle\Domain\Util\Clock;
+use Doctrine\ORM\Mapping as ORM;
+use PHPMentors\DomainKata\Entity\EntityInterface;
 
 /**
  * @package    PHPMentors_Example_Symfony
  * @copyright  2013 GOTO Hidenori <hidenorigoto@gmail.com>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @since      Class available since Release 1.0.0
+ *
+ * @ORM\Entity(repositoryClass="Example\CampaignBundle\Repository\CampaignRepository")
+ * @ORM\Table(name="campaign")
  */
-class OpenCampaignSpecification
+class Campaign implements EntityInterface
 {
     /**
-     * @var Clock
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var integer
      */
-    protected $clock;
+    protected $id;
 
     /**
-     * @param Clock $clock
+     * @ORM\Column(name="title", type="string", length=255)
+     * @var string
      */
-    public function __construct(Clock $clock)
+    protected $title;
+
+    /**
+     * @ORM\Column(name="description", type="text")
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * @ORM\Column(name="start_date", type="datetime")
+     * @var \DateTime
+     */
+    protected $startDate;
+
+    /**
+     * @ORM\Column(name="end_date", type="datetime")
+     * @var \DateTime
+     */
+    protected $endDate;
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
     {
-        $this->clock = $clock;
+        $this->description = $description;
     }
 
     /**
-     * @param  Campaign $campaign
-     * @return bool
+     * @return string
      */
-    public function isSatisfiedBy(Campaign $campaign)
+    public function getDescription()
     {
-        if (
-            ($campaign->getStartDate() <= $this->clock->getCurrentDateTime()) &&
-            ($campaign->getEndDate() > $this->clock->getCurrentDateTime())
-        )
-        {
-            return true;
-        }
-
-        return false;
+        return $this->description;
     }
 
     /**
-     * @param  CampaignRepository $campaignRepository
-     * @return ArrayCollection
+     * @param \DateTime $endDate
      */
-    public function satisfyingElementsFrom(CampaignRepository $campaignRepository)
+    public function setEndDate($endDate)
     {
-        $campaignList = $campaignRepository->findAll();
-        $campaignList = $campaignList->filter(function($campaign) { return $this->isSatisfiedBy($campaign); });
+        $this->endDate = $endDate;
+    }
 
-        return $campaignList;
+    /**
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param \DateTime $startDate
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
 

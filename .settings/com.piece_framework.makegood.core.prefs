@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+phpunit_config_file=
+preload_script=/phpmentors-example-campaign/app/bootstrap_test.php
+test_file_pattern=
+test_folders=/phpmentors-example-campaign/src/Example
+testing_framework=PHPUnit

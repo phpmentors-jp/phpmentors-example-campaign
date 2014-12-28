@@ -34,11 +34,7 @@
  * @since      File available since Release 1.0.0
  */
 
-namespace Example\CampaignBundle\Domain\Data\Repository;
-
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityRepository;
-use Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification;
+namespace Example\CampaignBundle\Util;
 
 /**
  * @package    PHPMentors_Example_Symfony
@@ -46,23 +42,24 @@ use Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification;
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @since      Class available since Release 1.0.0
  */
-class CampaignRepository extends EntityRepository
+class Clock
 {
     /**
-     * @return ArrayCollection
+     * @var \DateTime
      */
-    public function findAll()
+    protected $currentDateTime;
+
+    public function __construct()
     {
-        return new ArrayCollection(parent::findAll());
+        $this->currentDateTime = new \DateTime();
     }
 
     /**
-     * @param  OpenCampaignSpecification                    $spec
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return \DateTime
      */
-    public function selectSatisfying(OpenCampaignSpecification $spec)
+    public function getCurrentDateTime()
     {
-        return $spec->satisfyingElementsFrom($this);
+        return clone $this->currentDateTime;
     }
 }
 

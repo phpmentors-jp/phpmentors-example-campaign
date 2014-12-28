@@ -28,20 +28,24 @@ services:
 
   app.page.campaign:
     class: Example\CampaignBundle\Page\CampaignPage
-    arguments: [ @domain.spec.open_campaign, @domain.repository.campaign ]
+    arguments: [ @domain.spec.open_campaign, @domain.usecase.open_campaign_search ]
 
   domain.util.clock:
-    class: Example\CampaignBundle\Domain\Util\Clock
+    class: Example\CampaignBundle\Util\Clock
 
   domain.spec.open_campaign:
-    class: Example\CampaignBundle\Domain\Specification\OpenCampaignSpecification
+    class: Example\CampaignBundle\Specification\OpenCampaignSpecification
     arguments: [ @domain.util.clock ]
 
   domain.repository.campaign:
-    class: Example\CampaignBundle\Domain\Data\Repository\CampaignRepository
+    class: Example\CampaignBundle\Repository\CampaignRepository
     factory_service: app.entity_manager
     factory_method: getRepository
-    arguments: [ Example\CampaignBundle\Domain\Data\Campaign ]
+    arguments: [ Example\CampaignBundle\Entity\Campaign ]
+
+  domain.usecase.open_campaign_search:
+    class: Example\CampaignBundle\Usecase\OpenCampaignSearchUsecase
+    arguments: [ @domain.repository.campaign ]
 
 # Local Variables:
 # mode: conf

@@ -58,7 +58,7 @@ class CampaignPageTest extends WebTestCase
 
         $list = $page->getCampaignList();
 
-        $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $list);
+        $this->assertInstanceOf('PHPMentors\DomainKata\Entity\EntityCollectionInterface', $list);
     }
 }
 
